@@ -1,0 +1,19 @@
+{
+  "name": "appflix-client",
+  "version": "1.0.0",
+  "description": "movie search api front end",
+
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srpmfp/appflix-client.git"
+  },
+  "author": "Sean Peters",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srpmfp/appflix-client/issues"
+  },
+  "homepage": "https://github.com/srpmfp/appflix-client#readme"
+}
