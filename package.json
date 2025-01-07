@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "movie search api front end",
   "scripts": {
-    "test": "dev"
+    "test": "dev",
+    "start": "parcel src/index.html"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.13.3",
+    "parcel": "^2.13.3",
     "process": "^0.11.10"
   }
 }
