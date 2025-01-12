@@ -18729,27 +18729,13 @@ var _movieView = require("../Movie-View/Movie-View");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies, setMovies] = (0, _react.useState)([
-        {
-            _id: 1,
-            Title: 'Inception',
-            Description: 'desc1...',
-            ImagePath: 'https://th.bing.com/th/id/OIP.mxlA-LOxaiyUZBhS3SD_HwHaLj?w=200&h=312&c=7&r=0&o=5&dpr=1.5&pid=1.7'
-        },
-        {
-            _id: 2,
-            Title: 'The Shawshank Redemption',
-            Description: 'desc2...',
-            ImagePath: '...'
-        },
-        {
-            _id: 3,
-            Title: 'Gladiator',
-            Description: 'desc3...',
-            ImagePath: '...'
-        }
-    ]);
+    const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        fetch('https://myflix-movie-api.herokuapp.com/movies').then((response)=>response.json()).then((json)=>{
+            setMovies(json);
+        });
+    }, []);
     // If the list of movies is empty, the user will receive this message
     if (movies.length === 0) return;
     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18757,7 +18743,7 @@ const MainView = ()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/Main-View/Main-View.jsx",
-        lineNumber: 17,
+        lineNumber: 21,
         columnNumber: 5
     }, undefined);
     // If a movie is selected, the user will see the movie view
@@ -18768,7 +18754,7 @@ const MainView = ()=>{
         }
     }, void 0, false, {
         fileName: "src/components/Main-View/Main-View.jsx",
-        lineNumber: 23,
+        lineNumber: 27,
         columnNumber: 17
     }, undefined);
     // Otherwise, the user will see the main view
@@ -18781,16 +18767,16 @@ const MainView = ()=>{
                 }
             }, movie._id, false, {
                 fileName: "src/components/Main-View/Main-View.jsx",
-                lineNumber: 34,
+                lineNumber: 38,
                 columnNumber: 13
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/Main-View/Main-View.jsx",
-        lineNumber: 32,
+        lineNumber: 36,
         columnNumber: 13
     }, undefined);
 };
-_s(MainView, "XPyKn1NSe37kinj7bYrOqG9KydM=");
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -18800,37 +18786,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../Movie-Card/Movie-Card":"8AWjV","../Movie-View/Movie-View":"1caMM","react":"21dqq"}],"gkKU3":[function(require,module,exports,__globalThis) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"8AWjV":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../Movie-Card/Movie-Card":"8AWjV","../Movie-View/Movie-View":"1caMM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"8AWjV":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$56af = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -18862,7 +18818,37 @@ $RefreshReg$(_c, "MovieCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1caMM":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"1caMM":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$1bdf = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -18965,6 +18951,6 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["aQL8O","7qMjn","d8Dch"], "d8Dch", "parcelRequire94c2")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["aQL8O","7qMjn","d8Dch"], "d8Dch", "parcelRequire94c2")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

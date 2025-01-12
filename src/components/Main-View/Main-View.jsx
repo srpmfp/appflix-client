@@ -4,13 +4,16 @@ import { MovieView } from '../Movie-View/Movie-View';
 
 
 export const MainView = () => {
-    const [movies, setMovies] = useState([
-        { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: 'https://th.bing.com/th/id/OIP.mxlA-LOxaiyUZBhS3SD_HwHaLj?w=200&h=312&c=7&r=0&o=5&dpr=1.5&pid=1.7' },
-        { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...' },
-        { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...' }
-    ]);
+    const [movies, setMovies] = useState([]);
 
     const [selectedMovie, setSelectedMovie] = useState(null);
+
+    useEffect(() => {
+        fetch(
+            "https://appflixcf-d4726ef19667.herokuapp.com/")
+            .then((response) => response.json())
+            .then((data) => { console.log(data) });
+    }, []);
 
     // If the list of movies is empty, the user will receive this message
     if (movies.length === 0) return
