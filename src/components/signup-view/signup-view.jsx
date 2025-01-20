@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Form from 'react-bootstrap/Form';
 
 export const SignupView = () => {
 
@@ -32,48 +33,56 @@ export const SignupView = () => {
             }
         })
     }
-    return (<form onSubmit={handleSubmit}>
-        <label>
-            username :
-            <input
+    return (<Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formBasicUsername">
+
+            <Form.Label> username :</Form.Label>
+            <Form.Control
                 type="text"
                 value={username}
                 onChange={(e) => setUserName(e.target.value)}
                 required
                 minLength="3"
             />
-        </label>
-        <label>
-            password :
-            <input
+
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+
+            <Form.Label>password :</Form.Label>
+            <Form.Control
                 type="text"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength="3"
             />
-        </label>
-        <label>
-            birthday (yyyy-mm-dd) :
-            <input
+        </Form.Group>
+
+        <Form.Group controlId="formBirthday">
+            <Form.Label>
+                birthday (yyyy-mm-dd) :</Form.Label>
+            <Form.Control
                 type="text"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
                 required
                 minLength="3"
             />
-        </label>
-        <label>
-            email :
-            <input
+
+        </Form.Group>
+        <Form.Group controlId="formEmail">
+            <Form.Label>
+                email :</Form.Label>
+            <Form.Control
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 minLength="3"
             />
-        </label>
+
+        </Form.Group>
         <button type="submit"> Submit </button>
-    </form>
+    </Form>
     )
 }

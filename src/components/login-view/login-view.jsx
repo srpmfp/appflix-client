@@ -1,5 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
+
 
 export const LoginView = ({ onLoggedIn }) => {
 
@@ -41,26 +44,26 @@ export const LoginView = ({ onLoggedIn }) => {
     }
     return (
 
-        <form onSubmit={handleEvent}>
-            <label>
+        <Form onSubmit={handleEvent}>
+            <Form.Label>
                 Username:
-                <input type="text"
+                <Form.Control type="text"
                     value={username}
                     onChange={(e) => setUserName(e.target.value)}
                     required
                 />
-            </label>
-            <label>
+            </Form.Label>
+            <Form.Label>
                 Password:
-                <input
+                <Form.Control
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-            </label>
+            </Form.Label>
             <button type="submit">Submit</button>
-        </form>
+        </Form>
     )
 }
 

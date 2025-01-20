@@ -1,17 +1,20 @@
+import { Image, Card } from 'react-bootstrap';
+import Stack from 'react-bootstrap/Stack';
 import PropTypes from 'prop-types';
 export const MovieCard = ({ movie, onMovieClick }) => {
     return (
-        <div
-            onClick={() => {
-                onMovieClick(movie);
+        <Stack direction="horizontal" gap={3}>
+            <Card style={{ width: "10rem" }} onClick={() => {
+                onMovieClick(movie)
             }}>
-            {
-                movie.title
-
-            }
-        </div>
+                <Image src={movie.image} thumbnail />
+                <Card.Body>
+                    <Card.Title className="p-2">{movie.title}</Card.Title>
+                    <Card.Text>{movie.genre}</Card.Text>
+                </Card.Body>
+            </Card>
+        </Stack>
     );
-
 }
 MovieCard.PropTypes = {
     movie: PropTypes.shape({
