@@ -3,26 +3,21 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
-import { Container, Row } from 'react-bootstrap';
+import './main-view.scss';
+import { Col, Container, Row } from 'react-bootstrap';
 
 export const MainView = () => {
-  // Persistent login information
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const storedToken = localStorage.getItem('token');
-
   // User Information
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
-
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
   //Movie information
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [movies, setMovies] = useState([]);
 
   // return movie info from the database GET REQ
   useEffect(() => {
-    if (!token) {
-      return;
-    }
     fetch('https://appflixcf-d4726ef19667.herokuapp.com/movies', {
       headers: { Authorization: `bearer ${token}` },
     })
@@ -45,10 +40,10 @@ export const MainView = () => {
       });
   }, [token]);
 
-  if (!user) {
-    return (
-      <>
-        <Row>
+  return (
+    <Row>
+      {!user || !token ? (
+        <Col md={5}>
           <LoginView
             onLoggedIn={(user, token) => {
               setUser(user);
@@ -57,48 +52,42 @@ export const MainView = () => {
           />
           or
           <SignupView />
-        </Row>
-      </>
-    );
-  }
-  // If the list of movies is empty, the user will receive this message
-  if (movies.length === 0) return;
-  <div className='main-view'>The list is empty!</div>;
+        </Col>
+      ) : // If the list of movies is empty, the user will receive this message
+      movies.length === 0 ? (
+        <div className='main-view'>The list is empty!</div>
+      ) : // If a movie is selected, the user will see the movie view
 
-  // If a movie is selected, the user will see the movie view
-
-  if (selectedMovie) {
-    return (
-      <MovieView
-        movie={selectedMovie}
-        key={movies.title}
-        backButton={() => {
-          setSelectedMovie(null);
-        }}
-      />
-    );
-  }
-
-  // Otherwise, the user will see the main view
-  return (
-    <div>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie.title}
-          movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
+      selectedMovie ? (
+        <MovieView
+          movie={selectedMovie}
+          key={movies.title}
+          backButton={() => {
+            setSelectedMovie(null);
           }}
         />
-      ))}
-      <button
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}>
-        Log Out
-      </button>
-    </div>
+      ) : (
+        // Otherwise, the user will see the main view
+        <>
+          {movies.map((movie) => (
+            <MovieCard
+              key={movie.title}
+              movie={movie}
+              onMovieClick={(newSelectedMovie) => {
+                setSelectedMovie(newSelectedMovie);
+              }}
+            />
+          ))}
+          <button
+            onClick={() => {
+              setUser(null);
+              setToken(null);
+              localStorage.clear();
+            }}>
+            Log Out
+          </button>
+        </>
+      )}
+    </Row>
   );
 };
