@@ -1,4 +1,4 @@
-import { Image, Card, Container, Col } from 'react-bootstrap';
+import { Card, Container, Col } from 'react-bootstrap';
 import './movie-card.scss';
 import PropTypes from 'prop-types';
 
