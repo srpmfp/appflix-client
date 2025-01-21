@@ -1,5 +1,34 @@
-.MyFlix {
-  color: #4682b4;
+:root {
+  --primary-color: #0d1821;
+  --secondary-color: #87255b;
+  --tertiary-color: #cd8b76;
+  --tertiary-transparent: #cd8b764d;
+}
+
+.indexCont {
+  background: #000;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.movieCardStack {
+  align-self: center;
+}
+
+.login-card {
+  background: var(--tertiary-color);
+}
+
+:root {
+  --primary-color: #0d1821;
+  --secondary-color: #87255b;
+  --tertiary-color: #cd8b76;
+  --tertiary-transparent: #cd8b764d;
+  --secondary-transparent: #87255b4d;
+}
+
+.signupForm {
+  background: var(--secondary-color);
 }
 
 :root, [data-bs-theme="light"] {
