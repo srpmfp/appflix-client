@@ -1,5 +1,5 @@
 
-
+@import '~bootstrap/scss/bootstrap.scss';
 :root {
   --primary-color: #0D1821;
   --secondary-color: #87255B;
@@ -8,11 +8,9 @@
 }
 
 .indexCont{
+  
   background:black;
   height:100vh;
   overflow: hidden;
    
 }
-.movieCardStack{
-    align-self: center;
-  }
