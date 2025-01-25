@@ -1,30 +1,31 @@
 import PropTypes from 'prop-types';
+import { Card, Col, Button } from 'react-bootstrap';
+import './movie-card.scss';
+
 export const MovieCard = ({ movie, onMovieClick }) => {
-    return (
-        <div
-            onClick={() => {
-                onMovieClick(movie);
-            }}>
-            {
-                movie.title
+  return (
+    <Col fluid='md' md={3} sm={6} xs={12} className='bg-gradient position-relative'>
+      <Card
+        className='movieCardCont m-4 p-0'
+        onClick={() => {
+          onMovieClick(movie);
+        }}>
+        <Button className='position-absolute btn-secondary addBtn '>+</Button>
+        <Card.Img src={movie.image} variant='top' className='movieCardImg' />
+        <Card.Body className='p-0 movieCardBody text-center text-white text-outline'>
+          <Card.Title className='mTitleText text-light'>{movie.title}</Card.Title>
+          <Card.Text className='mGenreText'>{movie.genre}</Card.Text>
+        </Card.Body>
+      </Card>
+    </Col>
+  );
+};
 
-            }
-        </div>
-    );
-
-}
-MovieCard.PropTypes = {
-    movie: PropTypes.shape({
-        title: PropTypes.string,
-        director: PropTypes.shape({
-            bio: PropTypes.string,
-            name: PropTypes.string,
-            birthday: PropTypes.date
-        }),
-        genre: PropTypes.string,
-        image: PropTypes.string,
-        id: PropTypes.string,
-    }),
-    onMovieClick: PropTypes.func.isRequired
-}
-
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+  onMovieClick: PropTypes.func.isRequired,
+};
