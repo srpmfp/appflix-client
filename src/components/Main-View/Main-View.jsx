@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MovieCard } from '../movie-card/Movie-Card';
-import { MovieView } from '../movie-view/Movie-View';
+import { MovieView } from '../Movie-View/Movie-View';
 import { LoginView } from '../login-view/login-view';
 import { Card, Col, Row } from 'react-bootstrap';
 import './main-view.scss';
