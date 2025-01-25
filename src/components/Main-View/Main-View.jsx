@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
+import { MovieCard } from '../movie-card/Movie-Card';
+import { MovieView } from '../movie-view/Movie-View';
 import { LoginView } from '../login-view/login-view';
-import { SignupView } from '../signup-view/signup-view';
+import { Card, Col, Row } from 'react-bootstrap';
 import './main-view.scss';
-import { Col, Container, Row } from 'react-bootstrap';
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -41,34 +40,38 @@ export const MainView = () => {
   }, [token]);
 
   return (
-    <Row>
-      {!user || !token ? (
-        <Col md={5}>
-          <LoginView
-            onLoggedIn={(user, token) => {
-              setUser(user);
-              setToken(token);
-            }}
-          />
-          or
-          <SignupView />
+    <Row className='main-view w-100'>
+      {!user ? (
+        <Col className='d-flex w-100 flex-column align-items-center justify-content-center'>
+          <Card className='bg-dark w-50'>
+            <LoginView
+              onLoggedIn={(user, token) => {
+                setUser(user);
+                setToken(token);
+              }}
+            />
+          </Card>
         </Col>
       ) : // If the list of movies is empty, the user will receive this message
       movies.length === 0 ? (
         <div className='main-view'>The list is empty!</div>
       ) : // If a movie is selected, the user will see the movie view
-
       selectedMovie ? (
-        <MovieView
-          movie={selectedMovie}
-          key={movies.title}
-          backButton={() => {
-            setSelectedMovie(null);
-          }}
-        />
+        <Col md={5} className='mb-5'>
+          <MovieView
+            movie={selectedMovie}
+            key={movies.title}
+            backButton={() => {
+              setSelectedMovie(null);
+            }}
+          />
+        </Col>
       ) : (
         // Otherwise, the user will see the main view
-        <>
+
+        <Col
+          className='h-100 w-50 d-flex flex-row flex-{grow|shrink}-1 flex-wrap overflow-auto 
+          align-self-center justify-content-center'>
           {movies.map((movie) => (
             <MovieCard
               key={movie.title}
@@ -78,15 +81,18 @@ export const MainView = () => {
               }}
             />
           ))}
-          <button
-            onClick={() => {
-              setUser(null);
-              setToken(null);
-              localStorage.clear();
-            }}>
-            Log Out
-          </button>
-        </>
+          <Col className=' logBtn position-absolute bottom-0 left-0 d-flex flex-column '>
+            <button
+              className='btn btn-primary position-relative bottom-0'
+              onClick={() => {
+                setUser(null);
+                setToken(null);
+                localStorage.clear();
+              }}>
+              Log Out
+            </button>
+          </Col>
+        </Col>
       )}
     </Row>
   );
