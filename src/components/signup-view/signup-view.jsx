@@ -105,3 +105,7 @@ export const SignupView = ({ returnBtn }) => {
     </Row>
   );
 };
+
+PropTypes.SignupView = {
+  returnBtn: PropTypes.func.isRequired,
+};

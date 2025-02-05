@@ -5,6 +5,8 @@ import { Modal, Col } from 'react-bootstrap';
 import moment from 'moment-timezone';
 
 import { Card, Button } from 'react-bootstrap';
+import { propTypes } from 'react-bootstrap/esm/Image';
+import PropTypes from 'prop-types';
 
 export const ProfileView = ({ user, movie, token, setUser, onLoggedOut }) => {
   const userMovie = movie.filter((m) => user.movieId.includes(m.id));
@@ -159,4 +161,16 @@ export const ProfileView = ({ user, movie, token, setUser, onLoggedOut }) => {
       </Modal>
     </Col>
   );
+};
+PropTypes.propTypes = {
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    movieId: PropTypes.array.isRequired,
+  }).isRequired,
+  movie: PropTypes.array.isRequired,
+  token: PropTypes.string.isRequired,
+  setUser: PropTypes.func.isRequired,
+  onLoggedOut: PropTypes.func.isRequired,
 };
