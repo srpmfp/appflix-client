@@ -43,14 +43,20 @@ export const LoginView = ({ onLoggedIn }) => {
       });
   };
   return (
-    <Row md={1} className='align-items-center justify-content-center bg-dark rounded'>
+    <Row
+      md={1}
+      className='align-items-center justify-content-center bg-dark rounded'>
       {!signUp ? (
         <Card className='bg-dark p-0'>
           <Col className=' d-flex flex-column w-100 m-auto col-6 bg-dark'>
             <label className='login-Label  radius-10 w-100 text-center'>Login Here</label>
             <Card className='login-card d-flex  bg-dark radius-10 '>
-              <Form onSubmit={handleEvent} className='login-card radius-10 text-dark'>
-                <Form.Group controlId='formBasicUsername' className='p-1'>
+              <Form
+                onSubmit={handleEvent}
+                className='login-card radius-10 text-dark'>
+                <Form.Group
+                  controlId='formBasicUsername'
+                  className='p-1'>
                   <Form.Label>Username:</Form.Label>
                   <Form.Control
                     type='text'
@@ -59,7 +65,9 @@ export const LoginView = ({ onLoggedIn }) => {
                     required
                   />
                 </Form.Group>
-                <Form.Group controlId='formBasicPassword' className='p-1'>
+                <Form.Group
+                  controlId='formBasicPassword'
+                  className='p-1'>
                   <Form.Label>Password:</Form.Label>
                   <Form.Control
                     type='password'
@@ -67,7 +75,9 @@ export const LoginView = ({ onLoggedIn }) => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                  <Button type='submit justify-self-center ' size='sm'>
+                  <Button
+                    type='submit justify-self-center '
+                    size='sm'>
                     Submit
                   </Button>
                 </Form.Group>
@@ -98,5 +108,8 @@ export const LoginView = ({ onLoggedIn }) => {
   );
 };
 LoginView.propTypes = {
-  button: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  onLoggedIn: PropTypes.func.isRequired,
+  Button: PropTypes.func.isRequired,
 };

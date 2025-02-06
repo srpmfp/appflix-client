@@ -11,7 +11,7 @@ export const SignupView = ({ returnBtn }) => {
   const [birthday, setBirthday] = useState('');
 
   const handleSubmit = (e) => {
-    event.preventDefault();
+    e.preventDefault();
     const data = {
       Username: username,
       Password: password,
@@ -37,7 +37,9 @@ export const SignupView = ({ returnBtn }) => {
     <Row className='align-items-center w-100 '>
       <Card className=' bg-dark radius-10 m-0 p-0'>
         <Col className=' d-flex flex-column w-100 m-auto col-6 bg-dark'>
-          <Form onSubmit={handleSubmit} className='signupForm text-light p-1'>
+          <Form
+            onSubmit={handleSubmit}
+            className='signupForm text-light p-1'>
             <Form.Group controlId='formBasicUsername'>
               <Form.Label> username :</Form.Label>
               <Form.Control
@@ -79,8 +81,12 @@ export const SignupView = ({ returnBtn }) => {
                 minLength='3'
               />
             </Form.Group>
-            <Stack gap={2} className='d-flex justify-content-center'>
-              <button type='submit' className='btn btn-secondary'>
+            <Stack
+              gap={2}
+              className='d-flex justify-content-center'>
+              <button
+                type='submit'
+                className='btn btn-secondary'>
                 Submit
               </button>
             </Stack>
@@ -98,4 +104,8 @@ export const SignupView = ({ returnBtn }) => {
       </Card>
     </Row>
   );
+};
+
+PropTypes.SignupView = {
+  returnBtn: PropTypes.func.isRequired,
 };
