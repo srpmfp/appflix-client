@@ -1,6 +1,6 @@
 import './profile-view.scss';
 import { useState } from 'react';
-import { MovieCard } from '../movie-card/Movie-Card';
+import { MovieCard } from '../movie-card/movie-card';
 import { Modal, Col } from 'react-bootstrap';
 import moment from 'moment-timezone';
 
