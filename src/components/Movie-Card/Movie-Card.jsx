@@ -13,7 +13,6 @@ export const MovieCard = ({ movie, user }) => {
       className='m-cont bg-gradient position-relative m-3 p-2 '>
       <Link
         to={`/movie/${encodeURIComponent(movie.id)}`}
-        
         className='movieLink'>
         <Card
           className='movieCardCont m-0 p-0'
@@ -24,7 +23,7 @@ export const MovieCard = ({ movie, user }) => {
             variant='top'
             className='movieCardImg'
           />
-          <Card.Body className='p-0 movieCardBody text-center text-white text-outline'>
+          <Card.Body className='p-0 movieCardBody text-center text-white '>
             <Card.Title className='mTitleText text-light'>{movie.title}</Card.Title>
             <Card.Text className='mGenreText'>{movie.genre}</Card.Text>
           </Card.Body>

@@ -13,6 +13,7 @@
     border-radius:0px 0px 10px 10px;
     background:var(--secondary-color);
     font-family: "Oswald", sans-serif;
+    text-decoration: none;
     
 }
 .movieCardImg {
@@ -34,6 +35,9 @@
     right: 0;
     margin: auto;
      transition: transform 0.3s ease .1s;   
+}
+.mTitleText{
+    
 }
 
 .movieCardCont:hover{
